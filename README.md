@@ -42,6 +42,7 @@ sides that I see being impacts:
     - Code to merge: savant_fangraphs_merge.ipynb  
     - Pickled Merged Data: stats.pkl  
   4. Initial Cleaning/Modeling of Data:  
-    - Project Challenge Notebook.ipynb  
+    - first_model_notebook.ipynb  
+    - second_model_notebook.ipynb  
     
 *^Note: data from baseball-reference was not used in the final model, as I couldn't effectively merge with the Baseball Savant Data.*  
