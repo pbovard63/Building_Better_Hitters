@@ -76,10 +76,6 @@ def Savant_DataFrame_Builder(url):
     #Setting up dataframe:
     savant_df = pd.DataFrame(player_stats, columns=columns)
     
-    #Setting statistical columns to numeric:
-    num_cols = ['Age','G','PA','Year','Avg EV (MPH)','Avg LA (°)','Barrel%','Solid Contact %','Hard Hit %','Zone Swing %','Out of Zone Swing %','Pull %','Straight Away %','Oppo %','GB%','FB%','LD %','Sprint Speed']
-    savant_df[num_cols] = savant_df[num_cols].apply(pd.to_numeric, errors='coerce', axis=1)
-    
     savant_df.set_index(savant_df['Rk.'], inplace=True)
     savant_df.drop(columns='Rk.',inplace=True)
     savant_df['Player Link'] = player_links
