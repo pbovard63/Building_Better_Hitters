@@ -19,7 +19,7 @@ def train_val_split(X, y):
     Returns: a split set of features for training/validation and testing.
     '''
     X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
-    return X_train, X_test, y_train_val, y_test
+    return X_train_val, X_test, y_train_val, y_test
 
 def split_and_train_val_simple_lr(X, y):
     '''
