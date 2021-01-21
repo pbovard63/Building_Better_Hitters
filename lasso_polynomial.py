@@ -38,4 +38,4 @@ def lasso_polynomial_lr(X,y):
     print('Lasso Linear Regression w/ CV Results:')
     print('Lasso R^2: {}'.format(lasso_poly_score))
     print('Lasso mae: {}'.format(lasso_mae))
-    print('Lasso Coefficients: {}'.format(list(zip(p.get_feature_names(a), lasso_model.coef_))))
+    print('Lasso Coefficients: {}'.format(list(zip(p.get_feature_names(), lasso_model.coef_))))
