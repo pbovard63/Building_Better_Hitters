@@ -13,24 +13,13 @@ from sklearn.preprocessing import StandardScaler
 def mae(y_true, y_pred):
     return np.mean(np.abs(y_pred - y_true))
 
-def train_val_split(X, y):
-    '''
-    Argument: takes in a set of features X and a target y.
-    Returns: a split set of features for training/validation and testing.
-    '''
-    X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
-    return X_train_val
-    return X_test
-    return y_train_val 
-    return y_test
-
 def split_and_train_val_simple_lr(X, y):
     '''
     Argument: takes in a set of features X and a target variable y.
     Returns: Performs simple linear regression and returns the feature coefficeints and validation R^2.
     '''
     #First, split into train/val and test sets of data:
-    train_val_split(X, y)
+    X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
     #Simple Linear Regression (no CV):
     X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=.25, random_state=12)
@@ -52,7 +41,7 @@ def split_and_train_val_simple_lr_w_cv(X, y):
     Returns: Performs simple linear regression w/ K Fold cross validation and returns the feature coefficeints and validation R^2.
     '''
     #Split data from train_val_split
-    train_val_split(X, y)
+    X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
     std = StandardScaler()
     std.fit(X_train_val.values)
@@ -80,7 +69,7 @@ def split_and_train_val_lasso(X, y):
     Returns: Performs lasso linear regression w/ cross validation and returns the feature coefficeints and validation R^2.
     '''
     #Split data from train_val_split
-    train_val_split(X, y)
+    X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
     std = StandardScaler()
     std.fit(X_train_val.values)
@@ -103,7 +92,7 @@ def split_and_train_val_ridge(X, y):
     Returns: Performs ridge linear regression w/ cross validation and returns the feature coefficeints and validation R^2.
     '''
     #Split data from train_val_split
-    train_val_split(X, y)
+    X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
     std = StandardScaler()
     std.fit(X_train_val.values)
@@ -126,7 +115,7 @@ def split_and_train_val_EN(X, y):
     Returns: Performs ElasticNet linear regression w/ cross validation and returns the feature coefficeints and validation R^2.
     '''
     #Split data from train_val_split
-    train_val_split(X, y)
+    X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
     std = StandardScaler()
     std.fit(X_train_val.values)
@@ -148,7 +137,6 @@ def validation_comparer(X,y):
     Argument: takes in a set of features X and a target variable y.
     Returns: results of linear regression for simple LR, simple LR w/ KFold cross validation, and regularization via Ridge, Lasso, and ElasticNet.
     '''
-    train_val_split(X, y)
     split_and_train_val_simple_lr(X, y)
     print('\n')
     split_and_train_val_simple_lr_w_cv(X, y)
