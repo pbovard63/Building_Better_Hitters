@@ -32,7 +32,7 @@ def lasso_polynomial_lr(X,y):
     lasso_model.fit(X_train_val_poly_scaled , y_train_val)
     lasso_poly_score = lasso_model.score(X_train_val_poly_scaled, y_train_val)
     
-    #train_val_pred = lasso_model.predict(X_train_val_scaled)
+    train_val_pred = lasso_model.predict(X_train_val_poly_scaled)
     lasso_mae = mae(y_train_val, train_val_pred)
     #lasso_r2 = r2_score(y_train_val, train_val_pred)
     print('Lasso Linear Regression w/ CV Results:')
