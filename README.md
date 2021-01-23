@@ -55,12 +55,13 @@ sides that I see being impacts:
   4. Early Modeling:  
     - Folder: Early_Models  
   5. Final Model Iterations - in main area of repo:  
-    1. new_savant_stats.ipynb: added in additioanl quality of contact stats, in zone contact rate, and first strike rate  
-      - Led to creation of stats_2.pkl, new_stats.pkl  
-    2. new_stats_modeling:  used new stats, modeling and residual analysis in this code led to me making the following changes to the final model:  
-      - Removed Hard Hit %, GB%, FB%, LD%  
-      - Added: Walk Rate, Whiff Rate  
-    3. **Final Modeling and Testing: Final_Model_notebook**    
-      - Uses function lr_validation_train.py (Linear Regression - Simple, Simple with KFOLD Cross Validation, Lasso, Ridge, Elastic Net)  
-      - Uses function lasso_polynomial.py (LASSO Regression with Polynomial terms, to identify interaction terms)  
+      -  new_savant_stats.ipynb: added in additioanl quality of contact stats, in zone contact rate, and first strike rate  
+            - Led to creation of stats_2.pkl, new_stats.pkl    
+      - new_stats_modeling:  used new stats, modeling and residual analysis in this code led to me making the following changes to the final model:  
+        - Removed Hard Hit %, GB%, FB%, LD%  
+        - Added: Walk Rate, Whiff Rate   
+      - **Final Modeling and Testing: Final_Model_notebook**    
+        - Uses function lr_validation_train.py (Linear Regression - Simple, Simple with KFOLD Cross Validation, Lasso, Ridge, Elastic Net)  
+        - Uses function lasso_polynomial.py (LASSO Regression with Polynomial terms, to identify interaction terms)  
+
 *^Note: data from baseball-reference was not used in the final model, as I couldn't effectively merge with the Baseball Savant Data.*  
