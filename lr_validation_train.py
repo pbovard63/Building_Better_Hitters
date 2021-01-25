@@ -25,6 +25,7 @@ def split_and_train_val_simple_lr(X, y):
     #Simple Linear Regression (no CV):
     X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=.25, random_state=12)
     
+    #Standard Scaling of features:
     std = StandardScaler()
     std.fit(X_train.values)
     X_train_scaled = std.transform(X_train.values)
@@ -44,12 +45,17 @@ def split_and_train_val_simple_lr_w_cv(X, y):
     #Split data from train_val_split
     X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
+    #Standard scaling of features:
     std = StandardScaler()
     std.fit(X_train_val.values)
     X_train_val_scaled = std.transform(X_train_val.values)
+    
+    #Converting the cross validation sets to numpy arrays:
     X_cv, y_cv = np.array(X_train_val_scaled), np.array(y_train_val)
     kf = KFold(n_splits=5, shuffle=True, random_state = 12)
     cv_lm_r2s = []
+    
+    #Creating different CV sets:
     for train_ind, val_ind in kf.split(X_cv,y_cv):
     
         X_train, y_train = X_cv[train_ind], y_cv[train_ind]
@@ -72,13 +78,16 @@ def split_and_train_val_lasso(X, y):
     #Split data from train_val_split
     X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
+    #Standard scaling features:
     std = StandardScaler()
     std.fit(X_train_val.values)
     X_train_val_scaled = std.transform(X_train_val.values)
     
+    #Setting up Lasso Model:
     lasso_model = LassoCV(cv= 5)
     lasso_model.fit(X_train_val_scaled, y_train_val)
     
+    #Predicting and scoring model:
     train_val_pred = lasso_model.predict(X_train_val_scaled)
     lasso_mae = mae(y_train_val, train_val_pred)
     lasso_r2 = r2_score(y_train_val, train_val_pred)
@@ -95,13 +104,16 @@ def split_and_train_val_ridge(X, y):
     #Split data from train_val_split
     X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
+    #Standard Scaling Features:
     std = StandardScaler()
     std.fit(X_train_val.values)
     X_train_val_scaled = std.transform(X_train_val.values)
     
+    #Setting up ridge model:
     ridge_model = RidgeCV(cv= 5)
     ridge_model.fit(X_train_val_scaled, y_train_val)
     
+    #Making prediction and scoring model:
     train_val_pred = ridge_model.predict(X_train_val_scaled)
     ridge_mae = mae(y_train_val, train_val_pred)
     ridge_r2 = r2_score(y_train_val, train_val_pred)
@@ -118,13 +130,16 @@ def split_and_train_val_EN(X, y):
     #Split data from train_val_split
     X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=.2, random_state=5)
     
+    #Standard Scaling features:
     std = StandardScaler()
     std.fit(X_train_val.values)
     X_train_val_scaled = std.transform(X_train_val.values)
     
+    #Setting up ElasticNet Model:
     ev_model = ElasticNetCV(cv= 5)
     ev_model.fit(X_train_val_scaled, y_train_val)
     
+    #Making Prediction and scoring model:
     train_val_pred = ev_model.predict(X_train_val_scaled)
     ev_mae = mae(y_train_val, train_val_pred)
     ev_r2 = r2_score(y_train_val, train_val_pred)
@@ -138,12 +153,24 @@ def validation_comparer(X,y):
     Argument: takes in a set of features X and a target variable y.
     Returns: results of linear regression for simple LR, simple LR w/ KFold cross validation, and regularization via Ridge, Lasso, and ElasticNet.
     '''
+    
+    #Simply printing results for each model for easy comparison:
+    
+    #Simple Linear Regression:
     split_and_train_val_simple_lr(X, y)
     print('\n')
+    
+    #Simple Linear Regression, w// K Fold Cross validation:
     split_and_train_val_simple_lr_w_cv(X, y)
     print('\n')
+    
+    #Lasso Regularization:
     split_and_train_val_lasso(X, y)
     print('\n')
+    
+    #Ridge Regularization:
     split_and_train_val_ridge(X, y)
     print('\n')
+    
+    #ElasticNet Regularization:
     split_and_train_val_EN(X, y)

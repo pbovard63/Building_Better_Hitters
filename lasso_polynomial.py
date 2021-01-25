@@ -11,6 +11,10 @@ from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from sklearn.model_selection import KFold
 
 def mae(y_true, y_pred):
+    '''
+    Argument: takes in actual y values and predicted y values.
+    Returns: Mean Average Error.
+    '''
     return np.mean(np.abs(y_pred - y_true))
 
 def lasso_polynomial_lr(X,y):
