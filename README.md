@@ -53,7 +53,10 @@ sides that I see being impacts:
     - Code to merge: savant_fangraphs_merge.ipynb  
     - Initial Pickled Merged Data: stats.pkl  
   4. Early Modeling:  
-    - Folder: Early_Models  
+    - Folder: Early_Models:  
+        - Project_2_starter_nb.ipynb  
+        - first_model_notebook.ipynb  
+        - second_model_notebook.ipynb  
   5. Final Model Iterations - in main area of repo:  
       -  new_savant_stats.ipynb: added in additioanl quality of contact stats, in zone contact rate, and first strike rate  
             - Led to creation of stats_2.pkl, new_stats.pkl    
