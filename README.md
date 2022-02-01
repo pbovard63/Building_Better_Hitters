@@ -3,6 +3,8 @@
 ## By: Patrick Bovard 
 ### *Metis Data Science Bootcamp Winter 2021 Project 2* 
 
+### *Update with 2021 MLB Season Stats in Progress 🚧*
+
 ### Project Introduction:
 **Project Description:**    
 As a lifelong baseball fan, I decided to use my regression project at Metis to help address a baseball problem.  I wanted this to be an actionable project, one that could help predict on-field results, perhaps providing infomration on where a team could find a "hidden" advantage with a given player, or "unlock" additional offensive success.  
